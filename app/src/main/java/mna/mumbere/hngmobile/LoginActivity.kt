@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         txtReg.setOnClickListener{
             val regInttent = Intent(applicationContext, MainActivity::class.java)
             startActivity(regInttent)
-
+            finish()
         }
     }
 }

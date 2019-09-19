@@ -1,6 +1,7 @@
 package mna.mumbere.hngmobile
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         etFname.text = "First name: " +fname
         etLname.text = "Last name: " +lname
 
+        btnSign.setOnClickListener{
+            sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
+            val intent_log = Intent(applicationContext, LoginActivity::class.java)
+            startActivity(intent_log)
+            finish()
+        }
 
     }
 }
