@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         val fname = sharedPreferences.getString("First name", " ")
         val lname = sharedPreferences.getString("Last name", " ")
 
-        etEmail.text = email
-        etFname.text = fname
-        etLname.text = lname
+        etEmail.text = "Email: " +email
+        etFname.text = "First name: " +fname
+        etLname.text = "Last name: " +lname
 
 
     }

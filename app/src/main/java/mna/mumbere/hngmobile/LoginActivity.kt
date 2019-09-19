@@ -36,5 +36,11 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Email address or password invalid!",Toast.LENGTH_LONG).show()
             }
         }
+
+        txtReg.setOnClickListener{
+            val regInttent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(regInttent)
+
+        }
     }
 }
