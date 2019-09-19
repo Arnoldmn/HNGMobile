@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HNGMobile</string>
+    <string name="dashboard_txt">HNGIternship</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account? signin</string>
+    <string name="login">Login</string>
+    <string name="do_not_have_an_account_register">Create account</string>
+</resources>
