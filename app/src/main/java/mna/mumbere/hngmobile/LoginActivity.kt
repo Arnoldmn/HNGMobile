@@ -1,7 +1,9 @@
 package mna.mumbere.hngmobile
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,36 +11,35 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
+    @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val sharedPreferences = getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
-        val isLoggedIn: Boolean = sharedPreferences.getBoolean("isLoggedIn", false)
+        btnLogin.setOnClickListener {
 
-        val email = sharedPreferences.getString("Email", "DEFAULT_EMAIL")
-        val password = sharedPreferences.getString("Password", "DEFAULT_PASSWORD")
+            val email = txtEmail.text.toString()
+            val  password = txtPassword.text.toString()
 
-        if (isLoggedIn){
-            val loginIntent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(loginIntent)
+            val sharedPreferences = getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
+
+            val userDetails = sharedPreferences.getString(
+                email + password + "data",
+                "Email or password invalid. "
+            )
+
+            val editor = sharedPreferences.edit()
+            editor.putString("display", userDetails)
+            editor.apply()
+
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+
+
         }
 
-        btnLogin.setOnClickListener{
-
-
-            val mEmail = txtEmail.text.toString().trim()
-            val mPassword = txtPassword.toString().trim()
-
-            if (email === mEmail && password == mPassword){
-                sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
-            }else{
-                Toast.makeText(applicationContext,"Email address or password invalid!",Toast.LENGTH_LONG).show()
-            }
-        }
-
-        txtReg.setOnClickListener{
-            val regInttent = Intent(applicationContext, MainActivity::class.java)
+        txtReg.setOnClickListener {
+            val regInttent = Intent(applicationContext, RegisterActivity::class.java)
             startActivity(regInttent)
             finish()
         }
