@@ -23,7 +23,7 @@ class RegisterActivity : AppCompatActivity() {
 
             val editor = sharedPreferences.edit()
 
-            editor.putString(email + fname + lname + mpassword + "data", email + "\n")
+            editor.putString(email + fname + lname + mpassword + "data", email + "\n" + fname)
 
             editor.apply()
 
