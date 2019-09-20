@@ -12,9 +12,9 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val sharedPreferences = getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
-
         btnRegister.setOnClickListener{
+
+            val sharedPreferences = getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
 
             val email = txtEmail.text.toString().trim()
             val fname = txtFname.text.toString().trim()
@@ -23,10 +23,7 @@ class RegisterActivity : AppCompatActivity() {
 
             val editor = sharedPreferences.edit()
 
-            editor.putString("Email", email)
-            editor.putString("First name", fname)
-            editor.putString("Last name", lname)
-            editor.putString("Password", mpassword)
+            editor.putString(email + fname + lname + mpassword + "data", email + "\n")
 
             editor.apply()
 
